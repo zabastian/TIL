@@ -1,0 +1,24 @@
+새롭게 사전교육에 합류하게 되었다. (폴더를 만들고 깃허브에 push 하는 과정을 거쳤다.)
+
+{
+git config --global user.name zabastian
+cd  gitHub
+Git clone https://github.com/zabastian/TIL.git
+
+cd TIL
+Git add 1018.txt
+Git commit -m "Add Text File 1018.txt
+Git push
+
+웹 브라우저의 작동 원리에 대해 간단하게 강의를 들었다.
+
+오늘의 문제 풀이
+
+SELECT ANIMAL_ID, NAME 
+FROM ANIMAL_INS 
+WHERE ANIMAL_TYPE = 'Dog' AND NAME LIKE '%el%' 
+ORDER BY NAME;
+
+
+사전 캠프 퀘스트에서 문제를 계속 풀어볼 예정이며 웹개발 => sql 강의후에 연습문제를 풀 예정이다.
+
