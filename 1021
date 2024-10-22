@@ -1,0 +1,10 @@
+db서버 다운로드 노션정리를 하였고 mysql 강의 chapter 1내용을 들었다.
+
+오늘의 문제
+상품 준비시간이 20~30분 사이인, 한국음식점의 식당명과 고객번호 조회하기
+
+답
+SELECT restaurant_name, customer_id
+FROM table
+WHERE ready BETWEEN 20 AND 30
+AND food_type = 'korea'
