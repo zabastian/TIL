@@ -1,1 +1,14 @@
-오늘 2주차 강의를 듣고 나머지 정리를 했다.
+오늘 2주차 강의(order by,group by)를 듣고 나머지를 티스토리에 정리하였다.
+
+
+
+오늘의 문제
+
+결제 타입별 가장 최근 결제일 조회하기
+예시1) 결제 타입별 가장 최근 결제일 조회하기
+
+SELECT pay_type, max(date) recent_date
+
+FROM table
+
+GROUP BY pay_type
