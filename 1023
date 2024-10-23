@@ -1,0 +1,10 @@
+mysql 강의 3챕터를 들었다. 본 수업 들어가면 자바가 헷갈릴것 같아 생활코딩 자바도 동시에 들어주려 한다.
+
+오늘의 문제
+
+음식 종류별 가장 높은 주문 금액과 가장 낮은 주문금액을 조회하고, 가장 낮은 주문금액 순으로 (내림차순) 정렬하기
+
+SELECT cuisine_type, MAX(price) max_price, MIN(price) min_price
+FROM table
+GROUP BY cuisine_type
+ORDER BY min_price DESC;
