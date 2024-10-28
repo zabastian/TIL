@@ -1,0 +1,6 @@
+나도코딩 강의 중 AdoptOpenJDK를 이용해서 jdk 배포판을 이용하려 했으나 오류가 계속 발견되어 temurin을 다운받아 설치하게 되었다.
+
+brew install --cask temurin
+
+java -version 을 통해 정상 작동되는것을 확인하였다.
+
