@@ -1,0 +1,15 @@
+select a.order_id,
+       a.customer_id,
+       a.restaurant_name,
+       a.price,
+       b.name,
+       b.age,
+       b.gender
+from food_orders a left join customers b on a.customer_id=b.customer_id
+where b.customer_id is not null 
+라는 sql문에서
+
+food_orders와 customers에서 매칭되는 customer_id면 food_orders에서 customers와 매칭이되지 않는값이 출력되는거 아닌가? 라는 의문이 있었는데
+
+그게 아니고 순서대로 계산을 하면 a.customer_id의 값과 b.customer_id의 값을 left join 할 시에 food_orders의 customers와 매칭되지 않는값이 출력되는데 
+여기에서 where b.customer_id is not null 을 사용해줘 a의 나머지 customers_id와 매칭되지 않는값이 존재하면 b.customer_id가 null이 되기 때문에 결국에는 inner join의 값과 같아진다.
