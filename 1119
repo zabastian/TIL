@@ -1,0 +1,47 @@
+
+public void horn() {
+   System.out.println("빵빵");        // Car.class
+   }
+
+public class Main {   // Main.class
+    public static void main(String[] args) {
+        // 부모 클래스 자동차 객체 생성
+        Car car = new Car();
+        car.horn(); // 경적
+
+        System.out.println();
+        // 자식 클래스 스포츠카 객체 생성
+        SportsCar sportsCar = new SportsCar("Orion");
+
+        // 오버라이딩한 brakePedal(), horn() 메서드 호출
+        sportsCar.brakePedal();
+        sportsCar.horn();
+
+    }
+}   
+
+   public class SportsCar extends Car{        //sportsCar.class
+    String engine;
+    public void booster() {
+        System.out.println("엔진 " + engine + " 부앙~\n");
+    }
+
+    public SportsCar(String engine) {
+        this.engine = engine;
+    }
+
+    @Override
+    public double brakePedal() {
+        speed = 100;
+        System.out.println("스포츠카에 브레이크란 없다");
+        return speed;
+    }
+
+    @Override
+    public void horn() {
+        booster();
+    }
+}
+
+라고 3개의 클래스가 있을때 SportsCar sportsCar = new SportsCar("Orion"); 이거에 대한 의문이 있었다. "Orion"이 아니라 String engine;을 만들어 engined을 넣어줘야 하는것 아닌가 라는생각이였는데 
+생각을 해보니 어차피 "Orion"은 SportsCar.engine = (sportsCar.class에서 만들어준 임의의 값)이 들어가는 것이기 때문에 굳이 변수를 생성하지 않고 "Orion"을 넣어줘도 상관이 없는것이다.
