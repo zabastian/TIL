@@ -1,0 +1,5 @@
+6시간 정도 다형성 이해를 했다
+너무 화가났다 car1.tire.rideComfort(); // KIA 타이어 승차감은 60 이 예제와 관련된 코드인데 도무지 이해가 안가 세세하게 적어보려한다.
+일단 Car ca1 = new Car(new KiaTire("KIA"));라는 부분인데 
+Tire A = new KiaTire("KIA"); 와 같다 그 이유는 Car 클래스에서 Tire tire;라고 클래스와 변수값을 저장해주었기 때문에 
+Car cal = new Car(A);를 살펴보면 (a ㅁ = new b)(부모 타이어 클래스의 변수 = 자식 타이어 객체;) 이기때문에 
