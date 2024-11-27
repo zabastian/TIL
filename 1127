@@ -1,0 +1,14 @@
+1단계
+ MenuNumber = Menu.nextInt();를 do while 내부에서 실행시켜 무한 루프에 빠지는 문제점이 발생해 고쳤다
+2단계
+
+계속menuItems.get(i).MenuInformation() 이 부분에서 오류가 생겼다.
+처음에는 menuItems.MenuInformation().get()이렇게 코드를 작성하였다가
+ 나중에야 일단 인스턴스화 한 내용의 get함수를 가지고 와서  MenuInformation()함수를 호출해야 출력한다는 것을 깨달아 고치게되었다.
+
+
+또한 이렇게 코드를 짜면 생성자 하나하나 만들어 줘야 하는 문제점이 생겨 아래와 같이 코드를 수정했다.
+MenuItem menuitems = new MenuItem("ShackBurger", 6.9, "토마토, 양상추, 쉑소스가 토핑된 치즈버거");
+menuItems.add(menuitems);
+
+=> menuItems.add(new MenuItem("ShackBurger", 6.9, "토마토, 양상추, 쉑소스가 토핑된 치즈버거”); 
