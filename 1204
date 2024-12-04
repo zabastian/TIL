@@ -1,0 +1,4 @@
+//Thread thread1 = new Thread(gruoup1, task, "Thread 1"); 여기에서 Thread(group1)은 어짜피 gruoup1의 첫번째 해당하는 값을 호출할수밖에 없으니 "Group1"이 호출되는거 
+라며 이해안된 부분을 이해하였다
+
+스프링 3주차 까지 강의 듣고 정리는 한번 다 듣고나서 하려한다.
