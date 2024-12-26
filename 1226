@@ -1,0 +1,27 @@
+그 전과정에서 merge가 force로 병합되었다. 이 참에 깃허브 코드를 다시 공부하고 터미널에서 사용가능하게 만들었다.
+
+트러블 슈팅 
+배경
+처음에 구상은 develop이라는 브랜치에 like, user,comment,feed,report,friend를 merge해준 후 main에다 올리려 하였으나 깃허브 기능 연습을 하는도중 강제로 다른 내용이 강제로 merge가 되는 현상이 발생하였다.
+
+ 이로인해 git pull로 가져와도 원래있던 파일이 아닌 잘못된 파일이 merge가 강제로 되는 현상이 발생이된다는 것을 인지하고 git dev 브랜치를 만들어 주어 잘못된 파일이 들어가기 전 상태를 다시 만들어 주었다.
+
+근본적인 해결을 위해 terminal로 깃을 다루는 법을 익혔다.
+
+———사용방법——————
+
+Git  checkout feature/like로 브랜치 이동 후
+
+Git checkout -t origin/dev 사용 후에
+(-local과 remote를 서로 연동해준다.)
+
+Git branch로 등록된 것을 확인후 git pull로 다시 변경된 사항을 내 코드로 가져와 준다.
+
+Git add .
+Git commit -m “”을 사용해주어 커밋후 git push를 해준다.
+
+따라서 이런 방법을 통해 다른 언어를 사용해도 쉽게 깃허브 사용이 가능하게 기술을 익혔다.
+
+
+
+————like—————
