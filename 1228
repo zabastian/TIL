@@ -1,0 +1,19 @@
+그럼 맨처음에  memberService.signUp( // memberService의 signUp 메서드 호출
+                requestDto.getUsername(),
+                requestDto.getPassword(),
+                requestDto.getEmail(),
+                requestDto.getKim()
+        );이 부분이 실행되고 모든과정을 다거쳐 마지막에 SignUpResponseDto signUpResponseDt에 저장된후 반환한다
+        (why? 객체를 불러오는 거니까 당연히 불러오는 부분 시행하면 불러오는 객체를 포함해서 먼저 실행이 된다.
+  		service에서도 똑같다. memberRepository.save(member); 이 부분을 통해 MemberRepository의 내용을 불러오는것이니
+        db에 연결을 하는 과정을 다 마치고 Member savedMember 에 저장된 값이 들어오고 이 값을     
+        return new SignUpResponseDto(savedMember.getId(), savedMember.getUsername(), savedMember.getEmail());
+        이렇게 받아온후 SignUpResponseDto signUpResponseDto여기에 저장하고 값을
+        return new ResponseEntity<>(signUpResponseDto, HttpStatus.CREATED);로 출력한다.
+        
+        즉, {
+        		{ 	 
+                	{}
+                }
+            }
+       이런식으로 쭉 연결되 최종 리턴한다 생각하면 편하다.
