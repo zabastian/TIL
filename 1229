@@ -1,0 +1,15 @@
+-modelattribute도 requestparam처럼 직접 값을 받아서 쓸 수 있다고 하는데 그럼 requestparam 뭐하러 쓰나요?
+
+requestparam은 객체를 만들어서 받아오지 않기때문에 훨씬 더 간편하다 즉, 주소 url에 키,속성을 적는 즉시 불러와서 사용하기 때문에 간편한 작업할때는 훨씬 효율적이다.
+
+
+ requestbody와 modelattribute 헷갈리는점 정리
+@RequestBody
+
+검증에 실패하면 Spring은 **MethodArgumentNotValidException**을 발생시키며, 이는 HTTP 400 응답을 반환하게 됩니다. 이 경우, 유효성 검증에 실패한 항목이 있으면 전체 요청이 무효로 처리한다.
+
+@modelAttribute
+
+유효성 검증이 실패한 필드가 있어도, 전체 요청이 실패하는 것이 아니라, 검증에 실패한 필드만 오류로 처리되고 나머지 필드는 정상적으로 바인딩된다..
+
+ 
