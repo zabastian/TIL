@@ -1,0 +1,14 @@
+class Solution {
+    public int solution(int n) {
+        int[] answer = new int[n];
+        int number=0;
+        for(int i=1; i<n; i++){
+            if(n%i == 1){
+                answer[number++] = i;
+            }
+        }
+        return answer[0];
+    }
+}
+
+로 문제르 품 그냥 break;로 풀어도 되는걸 너무 돌아서 풀었다.
