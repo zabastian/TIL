@@ -1,0 +1,45 @@
+public static Review of(ReviewRequestDto request, User user, Order order) {
+    return new Review(
+            null,
+            request.getComment(),
+            request.getRate(),
+            null,
+            null,
+            null
+    );
+}
+원래는 setUser설정해주고 setOrder설정해줘야 하는데 이렇게 팩토리 메소드를 쓰면 바로 이렇게 값을 넣을 수 있음
+또한 저렇게 반환값을 바로 설정해 줄 수 있다. 그러니 ReviewRequestDto request, User user, Order orde이 과정자체가 
+다른 레포지토리에서 가져온 어떤 id값같은걸 원래 db와 같이 연결해주려고 save로 넣어주지 않은가?? 그 과정을 
+저런식으로 한번에 해결해준것이니 service레포지토리에서 Review review = Review.of(request,user,order);
+이런식으로 맞춰진다.( 원래라면 setMember이런식으로 불러서 넣어줬어야 했음)
+
+
+@PostMapping
+public ResponseEntity<ReviewResponseDto> createReview(@RequestBody ReviewRequestDto request, HttpSession session) {
+    Long userId = (Long) session.getAttribute("userId");
+    return new ResponseEntity<>(reviewService.createReview(request, userId, session), HttpStatus.OK);
+
+}
+이부분에서 reviewService.createReview(request, userId, session)를 받아온값을 return 해주는것이니 이 요청값의 최종 return값을 넣어주는것이나 마찬가지다
+즉, ReviewService에서 public ReviewResponseDto createReview(ReviewRequestDto request, long userId, HttpSession session){
+이런식으로 서로 맞춰줘야 한다.
+
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+
+
+로컬 변경 사항 삭제 후 원격 내용 유지
+
+git stash
+git pull origin dev
+git stash clear
+//git stash clear해주는 이유는 원격dev만 쓰고 내가 작업한 것을 저장하고 싶지않기 때문에 사용
+
+웬만하면 위와 같이 git stash를 이용해주자 그리고 git stash clear를 하게되면 전체 애플리케이션 적용이기 때문에 모든 stash한 내용이 사라질 수 있으니 조심해서 사용하자
+
+git reset --hard origin/dev
+
+
+
