@@ -1,0 +1,76 @@
+ crud에 대한 개념이 부족해서 기본적인 3계층을 만들어 직접 구현해보고 getter,setter를 너무 어노테이션에만 의존한거 같아 다양한상황에 값을 어떻게 받을까를 고민하고 코딩하는 시간을 가졌다.
+ 
+
+ 역시 스프링 컨테이너가 위대하다는 것을 느끼고 오늘 연습하고 실행한 코드를 올리겠다.
+
+ package com.jpa.baisc.layerpractice.practice.practice9_important;
+
+public class Main {
+    public static void main(String[] args) {
+
+
+        Controller controller = new Controller("김현준입니다.");
+
+        String data = "a";
+        controller.createController(data);
+        System.out.println(controller.createController(data));
+        System.out.println(controller.createController2());
+        System.out.println(controller.getName());
+        System.out.println(controller.getData());
+        controller.setData("해리 매과이어인데요?");
+        System.out.println(controller.getData());
+//        System.out.println(controller.setData(data));
+
+    }
+
+
+}
+
+package com.jpa.baisc.layerpractice.practice.practice9_important;
+
+public class Controller {
+    private String amad="아마드입니다.";
+    private String name;
+    private String data="매과이어입니다.";
+
+    public Controller(String name){
+        this.name = name;
+    }
+
+    public String createController(String abc){
+        return abc;
+    }
+
+    public String createController2(){
+        return amad;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+//    public void setData(String isac){
+//        //아 그럼 내가 처음에 물어본게 this.data = value라고 하면 value라는 어떠한 빈 값이 data에 적용되게 만들어준다고 생각하면 되는거네?
+//        //value의 역할은 속성을 연결해주는거라고 이해하면 되는거지?String isac이라는 어떤 임의의 값이야 그냥 의미부여하지마
+//        this.data = isac;
+//    }
+
+    public void setData(String isac){
+        //아 그럼 내가 처음에 물어본게 this.data = value라고 하면 value라는 어떠한 빈 값이 data에 적용되게 만들어준다고 생각하면 되는거네?
+        //value의 역할은 속성을 연결해주는거라고 이해하면 되는거지?String isac이라는 어떤 임의의 값이야 그냥 의미부여하지마
+        this.data = isac;
+    }
+
+    public String getData(){
+        return data;
+    }
+
+
+
+
+
+
+}
+
+
+
