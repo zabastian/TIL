@@ -1,7 +1,0 @@
-이번에 docker와 레디스 강의를 들었다. docker에서 mysql-docker 이름으로 접속하려고 하니까 build에서 오류가 나는데 여러가지 시도를 다 해 봐도 오류의 원인을 알 수 가 없어 일단 locakhos 로 바꿔 진했했다.
-
-redis 를 사용해 봤는데 이번에 redis/redisinsight 를 이용해 기존의 redis포트와 연결을 해주는 작업을 해주었다
-
-여기서 중요한게 그냥 localhost:6379 로 접근을 하게되면 redis/redisinsight로 접근을 해주게 되는것이기 때문에 내부에 localhost:6379가 없어 당연히 접근이 안되고
-
-host.docker.internal:6379 이런식으로 접근을 헤야 docker 내부를 이용해 redis를 연결해 줄 수 있다는 개념을 얻어가서 좋았다.
