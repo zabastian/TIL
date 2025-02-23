@@ -1,0 +1,1 @@
+이번에 docker와 레디스 강의를 들었다. docker에서 mysql-docker 이름으로 접속하려고 하니까 build에서 오류가 나는데 여러가지 시도를 다 해 봐도 오류의 원인을 알 수 가 없어 일단 locakhos 로 바꿔 진했했다.
