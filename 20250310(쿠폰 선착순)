@@ -37,3 +37,10 @@ CouponResponse의 응답값을 받는 Coupon으로는 couponUsed를 사용 할 �
 
 이런 식으로 코드를 구성하는것이였다. 굳이 엔티티에 하나 더 추가해주는 방식이 아닌 
  couponUsed값이 false일때 downloadedCount < maxCount;를 비교해 이 조건을 만족할때만 다른 유저들도 이 선착순 쿠폰을 조회가능하게만 만들어 주었다.
+
+(아래는 다운로드 코드)
+  // 다운로드 한도 초과 여부 체크
+            if (downloadedCount >= coupon.getFirstComeCouponMaxCount()) {
+                userCoupon.setCouponUsed(true);
+                throw new CustomRuntimeException(ErrorCode.COUPON_LIMIT_EXCEEDED);
+            }
