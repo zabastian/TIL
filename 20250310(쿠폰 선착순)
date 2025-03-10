@@ -1,0 +1,39 @@
+쿠폰기능에서 선착순쿠폰이 끝나면 다른 유저가 조회를 못하도록 기능을 구현했다.
+
+그런데 이렇게 하려다 보니 couponUsed = false가 true가 되면 조회가 안되도록 구현하였는데 이 couponUsed가 UserCoupon객체에 존재하게 되어 
+
+public List<CouponResponse> findRestaurantCoupons(Long restaurantId) {
+        List<Coupon> coupons = couponRepository.findByRestaurantId(restaurantId);
+
+CouponResponse의 응답값을 받는 Coupon으로는 couponUsed를 사용 할 수 없게 되었다.
+
+그래서 생각한것이 하나의 usedCoupon2(?) 이런식으로 하나 더 만들어서 Coupon 엔티티에 넣어주자는 생각이었는데 
+
+뭔가 이러한 구조가 마음에 들지 않았다(똑같은 기능이 userCoupon에도 있고 coupon에도 있는듯한 느낌?)
+
+그래서 생각해낸 방안이
+
+ public List<CouponResponse> findRestaurantCoupons(Long restaurantId) {
+        List<Coupon> coupons = couponRepository.findByRestaurantId(restaurantId);
+
+        return coupons.stream()
+                .filter(coupon -> {
+                    if (coupon.getType() == CouponType.FIRST_COME) {
+                        Integer maxCount = coupon.getFirstComeCouponMaxCount();
+
+                        if (maxCount == null) {
+                            maxCount = 0;
+                        }
+
+                        // 선착순 이벤트가 끝난 쿠폰은 유저가 조회하면 안된다.
+                        long downloadedCount = userCouponRepository.countByCouponIdAndCouponUsedFalse(coupon.getId());
+                        return downloadedCount < maxCount;
+                    }
+                    return true;
+                })
+                .map(CouponResponse::from)
+                .toList();
+    }
+
+이런 식으로 코드를 구성하는것이였다. 굳이 엔티티에 하나 더 추가해주는 방식이 아닌 
+ couponUsed값이 false일때 downloadedCount < maxCount;를 비교해 이 조건을 만족할때만 다른 유저들도 이 선착순 쿠폰을 조회가능하게만 만들어 주었다.
