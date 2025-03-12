@@ -1,0 +1,19 @@
+오늘 분산락,테스트 코드를 적용했다
+
+분산락 부분에서 날짜 데이터가 필용벗어서 그부분을 날짜 데이터가 필요할때만 적용하는걸로 코드를 만들었는데 팀원중에 한분이 이미 만들어 놓았어서 좀 허망했지만 분산락을 적용했고
+
+테스트 코드는 쿠폰생성부분과 실패 케이스에 대해서 락을 걸어줬는데 authservice이 부분이 좀 해결?하기 번거로웠다 
+
+예를 들어 이 부분은 Authservice에서 테스트 코드를 하는게 맞다 생각을 해서 성공 케이스에 
+
+        doNothing().when(authService).checkUserAuthority(ownerId, userId);
+이런식으로 적용을 해줬는데 실패 케이스도 필요할것 같아
+   doThrow(new ForbiddenException(ErrorCode.USER_UNAUTHORIZED))
+                .when(authService).checkUserAuthority(ownerId, userId);
+
+        Assertions.assertThrows(ForbiddenException.class, () -> {
+            ownerCouponService.createCoupon(userId, restaurantId, request);
+        });
+
+이렇게 적용을 해주었다. 여기서는 ownerId를 다른 숫자(L)로 넣어줬기 때문에 당연히 테스트 성공이 발생하였고 ForbiddenException뿐만 아니라 상위에 있는 상속해주는 객체를 넣어줘도 성공을 하게 해주는것을 보고 역시 
+구현이 정말 잘 되어있다고 느꼈다.
