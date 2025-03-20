@@ -1,0 +1,48 @@
+팀원중에 배포를 담담한 팀원이 elasticsearch를 적용한다 했는데 프로젝트가 끝날때까지 오류를 잡아내지 못하였다.
+
+그래서 엘라스틱 서치를 적용하기 전인 코드로 따로 브랜치를 파서 만들어놓았다.
+
+그러나 예상치 못한 문제가 발생하였는데 계속 포스트맨에서
+
+{
+    "httpStatus": "INTERNAL_SERVER_ERROR",
+    "errorMessage": "EL1007E: Property or field 'date' cannot be found on null"
+} 
+
+이러한 오류가 생성되는 것이었다.
+
+처음에는 쿠폰사용에는 date필드가 따로 존재하지 않는데 왜 이런 오류가 나온건지에 대해 시간을 많이 썼는데 알고보니 분산락을 건 곳에서 락키를 받아오는 코드에서 오류가 생긴것이었다.
+
+예약에서는 분산락을 팀장님이 걸어줬는데 그렇게 걸어줄 경우에는 request.date의 값을 무조건 가져오는 코드가 되기 때문에
+
+ public boolean hasField(Object object, String fieldName) {
+        for (Field field : object.getClass().getDeclaredFields()) {
+            if (field.getName().equals(fieldName)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+이런식으로 hasfield를 추가해 
+
+ if (request != null && hasField(request, "date")) {
+            LocalDateTime date = parser.parseExpression("#request.date").getValue(context, LocalDateTime.class);
+
+            if (date != null) {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmm");
+                String formattedDate = date.format(formatter);
+                context.setVariable("formattedDate", formattedDate);
+            }
+        }
+
+중간에 이렇게 코드를 수정해주었다. 즉, request가 null이 아닐경우나 request의 값이 date일 경우에만 date가 적용되게 해주었다.
+
+이렇게 하니 정상 작동 되었다.
+
+  
+참고 출처 :
+- https://tjdtls690.github.io/studycontents/java/2023-01-27-reflection01/
+
+
