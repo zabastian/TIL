@@ -1,0 +1,4 @@
+너무 당연하게 List<> a = new ArrayList()<>를 사용햐 온 것 갘다
+다시 기초로 돌아가서 속성자,생성자로 나누어 보고 
+라이브러리,북,메인기능을 jpa와 service나 requiredArgsconstructor 
+없이 구현했다
