@@ -1,0 +1,39 @@
+이력서 준비,정처기 실기 준비 중이라 til을 잘 작성하지 못하였다.(코딩테스트 다시 풀면서 문제 위주로 올리려 한다.)
+
+//     int answer = 0;
+        
+//     if(0 < angle && angle < 90){
+//         return 1;
+//     }
+//     else if(angle == 90){
+//         return 2;
+//     }
+//     else if(90 < angle && angle < 180){
+//         return 3;
+//     }
+//     else{
+//         return 4;
+//     }
+
+기존 간단한 문제이다. 삼황연산자 이용해 switch문으로 작성도 되지 않을까? 라는 의문에 다른 풀이로 풀어 보았다.
+
+class Solution {
+    public int solution(int angle) {
+        int type = 0 < angle && angle < 90 ? 1 : angle == 90 ? 2 : 90 < angle &&         angle < 180 ? 3 : 4 ;
+            
+            switch(type) {
+                case 1:
+                    return 1;
+                case 2:
+                    return 2;
+                case 3: 
+                    return 3;
+                case 4:
+                    return 4;
+            }
+        return -1;
+        
+    }
+}
+
+switch문으로 간단하게 해당 case에 맞는 코드를 만드어 결과값을 출력하였다.
