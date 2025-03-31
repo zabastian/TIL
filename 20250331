@@ -1,0 +1,5 @@
+spring.datasource.url=jdbc:mysql://localhost:3306/lastdance
+이 연결을 
+spring.datasource.url=jdbc:mysql://mysql-container:3306/lastdance
+로 연결을 하려 했으나 실패했다. 네트워크 주소가 localhost로 설정되어있는 문제같은데 밀린 일정 다 마치면 이것도 한번 수정하려 한다.
+
