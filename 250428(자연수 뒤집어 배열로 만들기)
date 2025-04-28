@@ -1,0 +1,24 @@
+class Solution {
+    public int[] solution(long n) {
+        // int[] answer = {};
+        String str = Long.toString(n);
+        int[] answer = new int[str.length()];
+        for( int i = 0 ; i < str.length() ; i++ ) {
+            answer[i] = str.charAt(str.length()-1-i) - '0';
+            
+        }
+        return answer;
+    }
+}
+
+// 여기에서 바로 int형으로 str.length로 사용하려 했는데 자릿수 변환등.. 해결하기가 쉽지 않았다.( 그래서 String으로 변환 )
+// 문자는 아스키 코드이기 때문에 '0' 즉,48의 값을 빼준다.
+
+이게 왜 되는가? 라고 생각이 들어 찾아보니 
+
+char는 문자이고, 문자에는 숫자 값이 내부적으로 존재하고
+
+예를 들어, char 타입으로 char ch = '0';을 선언하면, 이 값은 ASCII 코드 값인 48을 내부적으로 저장하게 되고
+
+즉, char 자체가 숫자처럼 취급될 수 있게되어 char와 int 간의 암시적인 변환이 가능하게 된다는 것을 알게되었다.
+
