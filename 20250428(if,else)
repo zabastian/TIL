@@ -1,0 +1,36 @@
+class Solution {
+    public long solution(long n) {
+        long x = 1;
+        
+        while(x < n){
+            if(n == x*x)
+            {
+                return (x+1)*(x+1);
+            }
+            x++;
+            else{
+               return -1;
+            }
+        }
+    }
+ }
+
+//else는 바로직전에 if문이 있어야 실행이 가능함 그러나 else는 바로직전에 x++가 있기 때문에 오류가 발생함
+
+즉, 이런식으로 해야함
+
+class Solution {
+    public long solution(long n) {
+        long x = 1;
+        
+        while(x*x <= n){
+            if(n == x*x)
+            {
+                return (x+1)*(x+1);
+            }
+            x++;
+        }   
+        return -1;
+            
+        }  
+ }
