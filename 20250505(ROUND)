@@ -1,0 +1,6 @@
+SELECT ROUND(AVG(DAILY_FEE), 0)
+FROM CAR_RENTAL_COMPANY_CAR A
+WHERE A.CAR_TYPE = 'SUV' ;
+
+ROUND
+-ROUND(..., 0): 그 평균값을 소수점 첫째 자리에서 반올림 한다.
