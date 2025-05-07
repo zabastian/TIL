@@ -1,0 +1,6 @@
+왜 int[] a 같은 배열길이는 a.length가 되는가 String처럼 a.length()로 해야하는거 아닌가?
+
+배열 내부에 public int length { return count; } 같은 게 있는건 아닌가?
+
+❌ , 그런 메서드는 없고, length는 JVM이 제공하는 필드이기 때문이다.
+(즉, 어떠한 객체(클래스)의 필드(변수)로 JVM에서 정의해 놓았기 때문에 length로 사용
