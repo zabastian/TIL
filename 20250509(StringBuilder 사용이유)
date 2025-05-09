@@ -1,0 +1,39 @@
+8.StringBuilder 사용이유
+
+
+
+기존 String은 불변객체이기 때문에 변셩시 새로운 문자열 객체를 생성해주게 되기 때문에 StringBuilder를 사용해서
+
+내부적인 Buffer를 이용해 변경이 쉽고 문자열을 쉽게 처리 할 수 있기 때문이다.
+
+즉, 성능향상 측면에서 굉장한 강점이 생긴다.
+
+
+
+append(String str): 문자열을 끝에 추가
+
+insert(int offset, String str): 지정한 위치에 문자열을 삽입
+
+delete(int start, int end): 지정한 범위의 문자열을 삭제
+
+toString(): StringBuilder 객체를 String으로 변환
+
+
+
+class Solution {
+    public String solution(int n) {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < n; i++) {
+            if (i % 2 == 0) {
+                sb.append("수");
+            } else {
+                sb.append("박");
+            }
+        }
+
+        return sb.toString();
+    }
+}
+
+
