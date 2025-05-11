@@ -1,0 +1,8 @@
+ try {
+            Integer.parseInt(s);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        
+        //이런식으로 try {} catch () {}를 사용하자
