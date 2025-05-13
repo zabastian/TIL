@@ -1,0 +1,33 @@
+class Solution {
+    public int solution(int[][] sizes) {
+        // int[][] a = new int[][]; 이렇게 풀면 안됨
+        // int[][] b = new int[][];
+        int j = 0;
+        int k = 0;
+
+        for (int i = 0; i < sizes.length; i++) {
+            int a = Math.max(sizes[i][0], sizes[i][1]);
+            int b = Math.min(sizes[i][0], sizes[i][1]);
+            
+            j = Math.max(j,a);
+            k = Math.max(k,b);
+        }
+            
+         // Math.max(0,a) *  Math.max(0,b);
+
+        return j * k;
+    }
+}
+// 다른사람풀이
+
+// class Solution {
+//     public int solution(int[][] sizes) {
+//         int length = 0, height = 0;
+//         for (int[] card : sizes) {
+//             length = Math.max(length, Math.max(card[0], card[1]));
+//             height = Math.max(height, Math.min(card[0], card[1]));
+//         }
+//         int answer = length * height;
+//         return answer;
+//     }
+// }
