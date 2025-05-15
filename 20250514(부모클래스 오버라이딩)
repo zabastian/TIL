@@ -1,0 +1,36 @@
+class D implements C {
+    public void a() {
+        System.out.println("자식에서 오버라이딩된 a()");
+        superA(); // 따로 부모 메서드를 불러주는 방식 필요
+    }
+
+    public void superA() {
+        C.super.a(); // ← 이건 인터페이스 default일 때만 가능
+    }
+
+    public void b() {
+        System.out.println("b()");
+    }
+}
+
+class Parent {
+    void hello() {
+        System.out.println("부모 hello");
+    }
+}
+
+class Child extends Parent {
+    void hello() {
+        System.out.println("자식 hello");
+    }
+
+    void callParentHello() {
+        super.hello(); // 부모 메서드 직접 호출
+    }
+}
+
+즉
+
+자식 클래스에서 직접 호출	     ✅ 가능	 super.메서드명()
+외부에서 부모 타입으로 호출	    ❌ 불가능	 오버라이딩된 자식 메서드가 실행됨
+인터페이스에서 default 메서드	     ✅ 가능	 인터페이스명.super.메서드() (자식 내부에서만)
