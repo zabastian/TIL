@@ -1,0 +1,40 @@
+class Solution {
+    public String solution(String[] cards1, String[] cards2, String[] goal) {
+        int a1 = 0;
+        int a2 = 0;
+        
+        for (String last : goal) {
+            if (a1 < cards1.length && cards1[a1].equals(last)){
+            a1++;}
+            else if (a2 < cards2.length && cards2[a2].equals(last)){
+            a2++;}
+            else { return "No";}
+        }
+        return "Yes";
+    }
+}
+
+// import java.util.*;
+
+// class Solution {
+//     public String solution(String[] cards1, String[] cards2, String[] goal) {
+//         Queue<String> q1 = new LinkedList<>(Arrays.asList(cards1));
+//         Queue<String> q2 = new LinkedList<>(Arrays.asList(cards2));
+        
+//         for (String word : goal) {
+//             if (!q1.isEmpty() && q1.peek().equals(word)) {
+//                 q1.poll(); // cards1에서 꺼냄
+//             } else if (!q2.isEmpty() && q2.peek().equals(word)) {
+//                 q2.poll(); // cards2에서 꺼냄
+//             } else {
+//                 return "No"; // 어느 쪽에서도 맞지 않음
+//             }
+//         }
+        
+//         return "Yes";
+//     }
+// }
+
+peek()는 선택하는 것
+Poll()는 꺼내는 것 
+왜냐하면 FIFO 구조이기 때문에 바로 꺼내서 사용 
