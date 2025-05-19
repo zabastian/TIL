@@ -1,0 +1,53 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(int k, int[] score) {
+        int[] answer = new int[score.length];
+        List<Integer> last = new ArrayList<>();
+        
+        for (int i = 0; i < score.length; i++) {
+            last.add(score[i]);
+            if (k < last.size()) {
+                last.remove(Collections.min(last));
+            }
+            answer[i] = Collections.min(last);
+        }
+        return answer;
+    }
+}
+
+//int[]로 푸는 방법
+// class Solution {
+//     public int[] solution(int k, int[] score) {
+//         int[] answer = new int[score.length];
+//         int[] last = new int[k]; // 상위 k명을 저장하는 배열
+//         int size = 0; // 현재 last에 저장된 점수 개수
+
+//         for (int i = 0; i < score.length; i++) {
+//             if (size < k) {
+//                 last[size++] = score[i]; // 아직 k개가 안되면 그냥 추가
+//             } else {
+//                 // 최소값 찾기
+//                 int minIdx = 0;
+//                 for (int j = 1; j < k; j++) {
+//                     if (last[j] < last[minIdx]) {
+//                         minIdx = j;
+//                     }
+//                 }
+
+//                 if (score[i] > last[minIdx]) {
+//                     last[minIdx] = score[i]; // 최소값보다 크면 교체
+//                 }
+//             }
+
+//             // 현재 최소값 구하기
+//             int min = last[0];
+//             for (int j = 1; j < size; j++) {
+//                 min = Math.min(min, last[j]);
+//             }
+//             answer[i] = min;
+//         }
+
+//         return answer;
+//     }
+// }
