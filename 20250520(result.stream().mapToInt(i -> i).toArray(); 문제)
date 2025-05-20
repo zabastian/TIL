@@ -1,0 +1,35 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(int[] answers) {
+        int[] pattern1 = {1, 2, 3, 4, 5};
+        int[] pattern2 = {2, 1, 2, 3, 2, 4, 2, 5};
+        int[] pattern3 = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
+
+        int first = 0, second = 0, third = 0;
+
+        for (int i = 0; i < answers.length; i++) {
+            if (answers[i] == pattern1[i % pattern1.length]) first++;
+            if (answers[i] == pattern2[i % pattern2.length]) second++;
+            if (answers[i] == pattern3[i % pattern3.length]) third++;
+        }
+
+        int maxScore = Math.max(first, Math.max(second, third));
+        List<Integer> result = new ArrayList<>();
+
+        if (first == maxScore) result.add(1);
+        if (second == maxScore) result.add(2);
+        if (third == maxScore) result.add(3);
+
+        return result.stream().mapToInt(i -> i).toArray();
+    }
+}
+
+result.stream()
+→ 리스트에 들어있는 요소들을 하나씩 스트림(연속된 데이터 흐름)으로 만듬
+
+.mapToInt(i -> i)
+→ 스트림 안에 있는 Integer 객체를 int 기본 타입으로 바꿔주는 과정 (언박싱)
+
+.toArray()
+→ int 타입 스트림을 배열 int[]로 변환
