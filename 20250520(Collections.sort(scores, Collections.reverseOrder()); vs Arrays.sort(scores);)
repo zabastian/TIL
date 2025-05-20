@@ -1,0 +1,41 @@
+import java.util.Arrays;
+
+class Solution {
+    public int solution(int k, int m, int[] score) {
+        Arrays.sort(score); 
+        int total = 0;
+        int n = score.length;
+        
+        for (int i = n - m; i >= 0; i -= m) {
+            total += score[i] * m;  
+        }
+        return total;
+    }
+}
+
+// import java.util.*;
+
+// class Solution {
+//     public int solution(int k, int m, int[] score) {
+//         // 배열을 리스트로 변환
+//         List<Integer> scores = new ArrayList<>();
+//         for (int s : score) {
+//             scores.add(s);
+//         }
+
+//         // 내림차순 정렬
+//         Collections.sort(scores, Collections.reverseOrder());
+
+//         int total = 0;
+
+//         // m개씩 묶어서 각 박스의 최저 점수 구하기
+//         for (int i = m - 1; i < scores.size(); i += m) {
+//             total += scores.get(i) * m;
+//         }
+
+//         return total;
+//     }
+// }
+
+
+이렇게 List<>만 내림차순만 정렬있다 생각하자 int[]로는 내림차순 쉽지가 않음
