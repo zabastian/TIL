@@ -1,0 +1,11 @@
+- @MappedSuperclass
+    
+    BaseEntity는 @MappedSuperclass를 사용
+    
+    (상속받는 엔티티에 필드를 포함시켜 테이블을 생성 안하게 만듬)
+    
+- @EntityListeners(AuditingEntityListeners.class)
+    
+    @EntityListeners(AuditingEntityListerner.class)를 사용 시
+    
+    @CreateDate, @LastModifiedDate를 사용가능하게 만들어 준다.
