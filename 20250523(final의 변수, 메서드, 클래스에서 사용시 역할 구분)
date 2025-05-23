@@ -1,0 +1,33 @@
+1. 변수에 사용될 때 – 값 변경 금지
+
+기본 타입: 값이 한 번 할당되면 변경할 수 없습니다.
+t x = 10;
+x = 20; // 컴파일 에러!
+
+참조 타입: 참조 대상을 바꿀 수 없다는 뜻이지, 객체 내부 상태는 바뀔 수 있습니다.
+final List<String> list = new ArrayList<>();
+list.add("Hello"); // 가능
+list = new ArrayList<>(); // 컴파일 에러!
+
+----------------------------------------------------------------------
+2. 메서드에 사용될 때 – 오버라이딩 금지
+
+class Parent {
+    public final void show() {
+        System.out.println("Hello");
+    }
+}
+
+class Child extends Parent {
+    public void show() { // 컴파일 에러!
+        System.out.println("Hi");
+    }
+}
+
+----------------------------------------------------------------------
+3. 클래스에 사용될 때 – 상속 금지
+
+final class MyClass {}
+
+class SubClass extends MyClass { // 컴파일 에러!
+}
