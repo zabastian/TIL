@@ -1,0 +1,72 @@
+StringBuilder vs stack 뭐가 더 효율적인 풀이인가?
+
+import java.util.*;
+
+class Solution {
+    public String solution(String X, String Y) {
+        int[] countX = new int[10];
+        int[] countY = new int[10];
+
+        // 각 숫자의 개수 세기
+        for (char c : X.toCharArray()) {
+            countX[c - '0']++;
+        }
+
+        for (char c : Y.toCharArray()) {
+            countY[c - '0']++;
+        }
+
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 9; i >= 0; i--) {
+            int commonCount = Math.min(countX[i], countY[i]);
+            for (int j = 0; j < commonCount; j++) {
+                sb.append(i);
+            }
+        }
+
+        if (sb.length() == 0) return "-1";
+        if (sb.charAt(0) == '0') return "0";  
+
+        return sb.toString();
+    }
+}
+
+// import java.util.*;
+
+// class Solution {
+//     public String solution(String X, String Y) {
+//         int[] countX = new int[10];
+//         int[] countY = new int[10];
+
+//         for (char c : X.toCharArray()) {
+//             countX[c - '0']++;
+//         }
+//         for (char c : Y.toCharArray()) {
+//             countY[c - '0']++;
+//         }
+
+//         Stack<Integer> stack = new Stack<>();
+
+//         for (int i = 9; i >= 0; i--) {
+//             int commonCount = Math.min(countX[i], countY[i]);
+//             for (int j = 0; j < commonCount; j++) {
+//                 stack.push(i);
+//             }
+//         }
+
+//         if (stack.isEmpty()) return "-1";
+
+//         StringBuilder sb = new StringBuilder();
+//         while (!stack.isEmpty()) {
+//             sb.append(stack.pop());
+//         }
+
+//         // 모든 숫자가 0이면 "0" 리턴
+//         if (sb.charAt(0) == '0') return "0";
+
+//         return sb.toString();
+//     }
+// }
+
+이렇게 스택으로 풀 수도있지만 새로운 생성자를 또 만들어내지 않는 가변성있는 StringBuilder를 사용하자
