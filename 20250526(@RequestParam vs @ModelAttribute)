@@ -1,0 +1,6 @@
+어떻게'와 '언제' 사용하는가에 따라 다르다 
+               @RequestParam               @ModelAttribute
+
+주 용도         단일 파라미터	             여러 필드를 가진 객체 전체 바인딩
+대상            기본 타입(String, int 등)	     DTO 클래스 (객체)
+생략 가능 여부	기본 타입이면 생략 불가	     객체일 경우 생략 가능 (@ModelAttribute 생략 가능)
