@@ -1,0 +1,11 @@
+JpaRepository<> 클래스안에 EntityManager가 존재하는것인가?
+
+맞다.
+
+private final EntityManager em;
+
+    public SimpleJpaRepository(JpaEntityInformation<T, ?> entityInformation, EntityManager entityManager) {
+        this.em = entityManager;
+    }
+
+이런식으로 내부구조가 되어있고 em.persist를 통해 사용이 가능하게 된다.
