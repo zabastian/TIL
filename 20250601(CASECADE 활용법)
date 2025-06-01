@@ -1,0 +1,12 @@
+주문(Order) → 주문 아이템(OrderItem) 관계는
+
+@OneToMany(mappedBy = "order", cascade = CascadeType.REMOVE)
+private List<OrderItem> orderItems;
+
+-@OneToMany 관계
+-주문(Order)이 부모이고, 주문 아이템(OrderItem)이 자식
+-그래서 부모인 주문을 삭제하면 자식인 주문 아이템들도 같이 삭제되어야 하므로 cascade = CascadeType.REMOVE를 줌
+
+@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+private List<OrderItem> orderItems;
+이 설정이면 주문 저장, 삭제, 수정 시 자식 주문 아이템도 함께 처리됨
