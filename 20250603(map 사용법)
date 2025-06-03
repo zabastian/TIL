@@ -1,0 +1,27 @@
+Map : put, get, remove, containsKey
+
+사용법
+
+import java.util.*;
+
+public class MapExample {
+    public static void main(String[] args) {
+        Map<String, Integer> map = new HashMap<>();
+
+        map.put("apple", 3);     // 값 추가
+        map.put("banana", 5);
+        map.put("apple", 10);    // 같은 키면 값이 덮어쓰기됨
+
+        System.out.println(map.get("apple"));   // 10 출력
+        System.out.println(map.containsKey("banana")); // true
+
+        map.remove("banana");
+        System.out.println(map.containsKey("banana")); // false
+
+    }
+}
+
+//이렇게 사용하는 이유는 key와 value값으로 되어있기 때문이다.
+put : 값 추가
+get : Map<String, Integer>니까 키로서 "apple"이 주어지고 value인 10이 출력된것
+containsKey : boolean유무
