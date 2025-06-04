@@ -1,0 +1,36 @@
+public class UserController {
+    private final UserService userService;
+
+        @PostMapping("/signup")
+        public ResponseEntity<UserResponse> signUp(@RequestBody UserRequest userRequest) {
+
+            List<Integer> a = Arrays.asList(3,4,7,5);
+            //이렇게 되는 이유는 타입이 Integer를 List로 감싼형태이기 때문에 Arrays(배열)을 asList(리스트)로 해주는 문법 사용해야함
+            Collections.sort(a);
+            Collections.sort(a, Collections.reverseOrder());
+
+            Integer[] b = new Integer[3];
+            b[0] = 1;
+            b[1] = 4;
+            b[2] = 3;
+
+            Arrays.sort(b);
+            Arrays.sort(b, Collections.reverseOrder());
+
+
+
+            UserResponse userResponse = userService.userServiceResponse(userRequest);
+            return new ResponseEntity<>(userResponse, HttpStatus.CREATED);
+        }
+
+
+//        Collections.sort(a);
+
+    /*public ResponseEntity<UserResponse> signUp(@RequestBody UserRequest userRequest) {
+        UserResponse userResponse = userService.userServiceResponse(
+                userRequest.getUsername(),
+                userRequest.getPassword()
+        );
+        return new ResponseEntity<>(userResponse, HttpStatus.CREATED);
+    }*/
+}
