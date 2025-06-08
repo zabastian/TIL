@@ -1,0 +1,3 @@
+@MappedSuperclass // 엔티티가 아니지만, 자식 엔티티들이 상속받아서 필드를 공유 (즉, User, Post 등 엔티티에서 이 클래스를 상속하면 createdAt, updatedAt 컬럼이 자동으로 포함됨.)
+@Getter
+@EntityListeners(AuditingEntityListener.class) // @CreatedDate, @LastModifiedDate 등의 애너테이션이 작동활성확 (@EnableJpaAuditing이 필요)
