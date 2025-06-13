@@ -1,0 +1,36 @@
+ User user = userRepository.findById(userId)
+                    .orElseThrow(() -> new RuntimeException("아이디가 없습니다. " + userId));
+
+이게 어떻게 가능함??
+
+내부적으로 () -> new RuntimeException("아이디가 없습니다. " + userId)); 이것은
+
+interface A { void sayHello() }  이렇게 되있고 이것에대한 A a = new A(); 라고 한 후 public void sayHello() {psvm("안녕"} , a.sayHello();를 호출하는게 정상적인데
+
+람다 함수라고 이런과정을 안거치고 바로 호출하게 해준다.
+
+즉,
+
+interface Greeting {
+    void sayHello();
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // 익명 클래스 방식으로 구현
+        Greeting greet1 = new Greeting() {
+            @Override
+            public void sayHello() {
+                System.out.println("Hello!");
+            }
+        };
+        greet1.sayHello();  // 출력: Hello!
+    }
+}이런 코드가
+
+public class Main {
+    public static void main(String[] args) {
+        Greeting greet2 = () -> System.out.println("Hello!");
+        greet2.sayHello();  // 출력: Hello!
+    }
+} 이렇게 간단해진다.
