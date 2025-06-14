@@ -1,0 +1,15 @@
+@RestControllerAdvice
+public class GlobalExceptionHandler {
+    @ExceptionHandler(UserRuntimeException.class)
+    public ResponseEntity<String> HandleNotFoundException(UserRuntimeException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+    }
+}
+
+public class UserRuntimeException extends RuntimeException{
+    public UserRuntimeException(String message) {
+        super(message);
+    }
+}
+
+// 여기서 super(message)는 당연히 상위에 있는 RuntimeException의 속성값중 하나입니다.
