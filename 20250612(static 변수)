@@ -1,0 +1,13 @@
+
+public class ExceptionMessage {
+    public final String USER_NOT_FOUND = "아이디가 없습니다. ";
+
+    public static UserRuntimeException userNotFoundException(Long userId) {
+        return new UserRuntimeException(USER_NOT_FOUND + userId); // 컴파일 오류!
+    }
+}
+
+이렇게 쓰면 안되는데
+
+그 이유는 static은 인스턴스 변수를 생성하지 않기 때문에 static으로 선언된 객체에 해당하는 static 변수를 
+사용해야 함
