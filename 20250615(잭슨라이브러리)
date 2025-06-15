@@ -1,0 +1,6 @@
+Spring + Jackson의 자동 직렬화(Serialization) 과정을 거치는데
+
+Spring은 HttpMessageConverter 중 하나인 MappingJackson2HttpMessageConverter를 사용해서
+이 객체를 JSON 문자열로 변환합니다.
+
+즉, 잭슨 라이브러리가 객체를 불러오면 그에해당하는 getter()를 가져와서 Json형태로 출력해준다.
