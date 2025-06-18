@@ -1,0 +1,17 @@
+ public void setUser(User user) {
+    this.user = user;
+    user.getUserCoupons().add(this);
+}
+이런 편의 메서드를 쓰거나,
+
+
+public UserCoupon(Boolean couponUsed, User user, Coupon coupon) {
+    this.couponUsed = couponUsed;
+    this.user = user;
+    user.getUserCoupons().add(this);
+    this.coupon = coupon;
+    coupon.getUserCoupons().add(this);
+} 
+
+이렇게 해줘야 한다는게 부모쪽에서는 동기화가 안되어 있을 수 있어서 저렇게 해줘야 하는것이다.
+즉, @ManyToOne(자식)은 설정이되어있어도 @OneToMany(부모)에서 동기화가 안되어 있기 때문에 이렇게 user.getUserCoupons().add(this);를 사용한다.
