@@ -1,0 +1,13 @@
+아니 왜 3306 연결임?
+
+spring:
+  datasource:
+    url: jdbc:mysql://mysql-container:3306/ren
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    
+    //3306으로 해놓아야 한다. mysql-container자체가 이미 컨테이너 내부에서 접근하는것을 가르킨다. 즉
+    localhost:3307 처럼 어디서 접근하는지 표현할 필요가 없이 바로 3306(mysql)포트 접근한다
+
+    
