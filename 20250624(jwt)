@@ -1,0 +1,24 @@
+JWT는 header + payload + 비밀키 => signature 로 만들어진다.
+
+
+
+1. maven에서 jwt 관련 gradle추가 한다.
+
+implementation("com.auth0:java-jwt:3.3.0")
+
+
+2.
+
+String token = JWT.create()
+        .withIssuer("sparta.basic.com")
+        .withSubject(studentId.toString())
+        .withClaim("role", role)
+        .withClaim("customField1", dataYouWannaPut)
+        .withClaim("customField2", "customFieldValue2")
+        .withIssuedAt(new Date())
+        .withExpiresAt(new Date(System.currentTimeMillis() + 3600 * 1000))
+        .sign(algorithm); // 서명
+return token;
+//이런식으로 추가해 주는 데 의미는 아래와 같다.
+
+
