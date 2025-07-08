@@ -1,0 +1,17 @@
+jwt조금더 분석했다.
+
+withIssuer는 JWT를 생성한 시스템 / 서버이다
+
+withSubJect는 ID이다. ==> ( String으로 관리 받나보다 만약 int면 Integer.toString(studentId); 이런식으로 하지 않을까?)
+
+-- "sub" : "studentId",
+
+withClaim은 key + value값으로 payload에 들어갈 값이다 {ex) .withclaim("username", "jon jonse");
+
+.withIssuedAt(new Date())는 토큰의 생성시간
+
+"iss" : "example",
+
+.withExpiresAt(new Date(System.currentTimeMillis() + 3600 * 1000)) 는 토큰의 만료시간
+
+"exp" :,
