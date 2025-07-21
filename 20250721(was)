@@ -1,0 +1,6 @@
+was의 역할은 동적인 웹 애플리케이션 실행 환경을 제공한다.
+즉, HTTP의 요청을 수신하고 받은 요청에 대해 Dispatcher Servlet을 실행하는 역할을 한다.
+
+✔️ WAS가 요청을 가장 먼저 받는다 →
+✔️ 그 요청을 DispatcherServlet → Controller로 전달 →
+✔️ Controller에서 HttpServletRequest 등을 통해 요청 내용을 다룬다.
