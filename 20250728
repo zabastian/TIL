@@ -1,0 +1,15 @@
+JWT로그인을 새롭게 시도하는중 REFRESH TOKEN 설정에서 오류가 많이 발생하였다.
+
+오늘 고친 오류는
+
+POSTMAN에서 로그인 후 홈페이지에서 USERID를 불러오는 중에 발견했는데
+
+REQUEST에서 받아오는 USERID를 계속 RESPONSE값에 넣어줬기 때문이라는 오류를 찾아냈다.
+
+결국 기존 userId 정보 즉 User user = new User(userId ... ) 로 생성자를 만들어 놓은 값에 user.getUserId를 하니 원하는 정보가 출력되었다.
+
+
+ spring security 설정 추가 + 로그아웃 기능을 변경하는 중에 도 오류가 발생하였는데
+
+ 아무래도 기존 jwt에서 USERROLE에 따라 받아오는 방식에서 생긴것 같아 내일 고칠 생각이다.
+
