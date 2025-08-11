@@ -1,1 +1,14 @@
+처음 로직이 별로 이해가 가지 않았다. BaseException에서  
+  public BaseException(ErrorCode errorCode) {
+        super(errorCode.getMessage());
+        this.errorCode = errorCode;
+    } 이런식으로 코드를 짰는데 왜 super()를 이용해서 message 값을 전달해줘야 하는지 왜 다른값은 전달해주지 않는지에 대한 의문점이 있었는데 
 
+알고보니 부모 클래스인 RuntimeException 에서는 message에 대한 값을 return해주는 객체가 따로 존재하였고, 나머지 내가 만든 값들에 대해서는 그런 객체가 존재하지 않으니
+넘겨줄 필요가 없는 거였다.
+
+또한 public enum ErrorCode { 에서 USER_NOT_FOUND("해당 메세지 못찾음",HttpStatus.NOT_FOUND, 1)이런식으로 해준것도 좀 신기했다.
+
+enum으로 정의된 객체는 이런식으로 생성자 역할?? 처럼 사용 할 수 있기 때문에 다른 클래스에서 이 enum으로 정의된 객체는 
+
+ErrorCode.USER_NOT_FOUND 처럼 (마치 static 처럼 사용 할 수 있다.)
