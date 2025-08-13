@@ -1,0 +1,19 @@
+배경 : 
+
+token사용 시에 accesstoken을 재발급 해주려면 refreshtoken이 필요하다. 즉,
+
+accesstoken이 만료시에 refreshtoken을 request로 받아와서 response에 해당하는 accesstoken을 받아와야 하는 로직을 구현해야 한다.
+
+방법 2가지 :
+
+1.
+
+ 첫번째 방법은 회원가입,로그인 관련된 패키지에 request,response 클래스를 따로 만들어 authService에서 해당하는 accesstoken값을 받아오는것이다.
+
+2.
+
+두번째 방법은 refreshtoken과 accesstoken의 주기를 길게 통일하는것이다. 어차피 refreshtoken은 따로 db에 저장이 되어있으니, 1차적인 보안역할은 한다 생각하기 때문이다.
+
+결론 :
+
+탈취당할때의 위험성 때문에 refreshtoken을 만든것이고, 만약에 2번째 방식을 사용하면 해커가 accesstoken을 털었을때, 주기가 30일이라고 할 시 해킹당한 후 30일동안 취약점에 계속 노출되는것이기 때문에 첫번째 방식을 사용한다고 정했다.
