@@ -1,0 +1,54 @@
+배경 :
+
+list로 만들기 위해 stream으로  Match mach 에서 match에 저장된 속성들을  responsedto에 전달해서 return 해주는 로직이 되어있다는것을 안다 
+
+하지만, 
+
+`.map(OwnerMatchResponseDto::from)`
+
+로 전달을 해주는 팩토리 메소드와 달리  일반 생성자에서는
+
+ `.map(OwnerMatchResponseDto::new)` 이렇게 전달을 할 텐데 
+
+match → new OwnerMatchResponseDto(getter~~)로 전달하면 어떻게 받아야하는지가 궁금해졌다.
+
+결론 :
+
+일단 맨처음 `.map(OwnerMatchResponseDto::from)` 이 코드는
+`.map(match -> OwnerMatchResponseDto.*from*(match))`
+
+이 코드와 같다,
+
+즉, List에 저장되어있는 List<Match> matches 에 대한 리스트들에 대해
+
+저장되는 match(이름은 상관 x)의 정보를 저런식으로 전달하는것이기 때문에 저렇게 전달해주는 것이고 결국에는 new OwnerMatchResponseDto(~~)로 생성자를 만드는 과정이다.
+
+다르게 생각하면
+
+`.map(OwnerMatchResponseDto::new)` 라는 로직과 같은데 이렇게 될시에는 
+
+```
+public OwnerMatchResponseDto(Match match) {
+    this.name = match.getName();
+    this.cost = match.getCost();
+    this.matchDate = match.getMatchDate();
+}
+
+```
+
+이런식으로 ResponseDto에서 만들어 줘야 한다.
+
+(아래 코드에서 match의 정보를 response에 할당하는 로직을 만드는것처럼
+
+ public OwnerMatchResponseDto(Match match)를 만들어 주는 것이다.)
+
+```
+return matches.stream()
+.map(match -> new OwnerMatchResponseDto(
+match.getName(),
+match.getCost(),
+match.getMatchDate()
+))
+.toList();
+
+```
