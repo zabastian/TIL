@@ -11,3 +11,5 @@ protocol=https
 (이런 간단한 명령어가 있지만 그냥 스포트라이트에 ketchain에서 github검색하고 관련한걸 다 지우는 방법도 있다.)
 
 이제 git push -u origin main이 정상작동한다.
+
+(자세한 사진은 file 레포지토리의 read.me에 사진을 띄어놓았다.)
