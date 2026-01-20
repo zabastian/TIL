@@ -1,0 +1,7 @@
+지금 main -> feature -> crud 구조로 브랜치를 만들었는데 
+
+There is no tracking information for the current branch. 라는 오류가 발생했다
+
+생각해보니 feature에서는 로컬에서만 만들고 원격저장소에 저장을 안한 상태여서
+
+git push -u origin feature를 feature branch에서 실행을 해준 후 다시 git merge crud로 병합을 해준 후 git push를 생성해 feature까지 현재구조를 업데이트 했다.
