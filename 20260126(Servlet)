@@ -1,0 +1,7 @@
+여태까지 내가 아는 ResponseEntity의 역할은 상태값 반환해주는 역할로 알고 있었는데 
+그 때 드는 의문은 그럼 HttpServletResponse의 역할을 ResponseEntity가 하고 있냐는 생각이었다.
+
+결론부터 말하자면 역할을 수행하는것은 맞지만 그 자체를 대신하는것은 아니다.
+
+이렇게 말하는 이유가 우리는 Spring MVC를 사용하고 있기 때문에, HttpServletRequest/Response를 안 써도
+Spring MVC가 HTTP 처리를 추상화해주고, ResponseEntity는 그 추상화의 결과물 중 하나이기 때문인다.
