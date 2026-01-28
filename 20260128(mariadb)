@@ -1,0 +1,1 @@
+기본 crud 적용 및 mariadb 연결 후 manytomany까지 관계 설정 (추후에 로그인 까지 jwt 다시 해볼 예정)
