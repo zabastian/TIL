@@ -1,0 +1,13 @@
+
+Entity / JPA	jakarta.persistence.*
+트랜잭션	      org.springframework.transaction.annotation.Transactional
+Validation	   jakarta.validation.*
+Controller	   org.springframework.web.bind.annotation.*
+DI	           org.springframework.stereotype.*
+설정	          org.springframework.context.*
+
+즉,
+엔티티/검증 = jakarta
+서비스/트랜잭션/웹 = spring
+
+이라고 기준 정해두면 편하다.
