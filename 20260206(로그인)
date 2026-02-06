@@ -1,0 +1,8 @@
+관리자 페이지 네트워크 확인 후 RequestMapping("/api/auth")
+오전 SportXos db 구조 이해 완료
+관리자 페이지 접속 후 로그인 과정 이해 중
+ex) RequestMapping("/api/auth") 부분은 토큰을 발급받은 상태에
+    
+        String header = request.getHeader("Authorization") 이러한 코드가 먼저 나와 당황했지만 
+        authController여서 맞는지 확인만하는 jwt토큰이라는걸 이해 후 실제 생성 jwt추적
+        그니까 선수권 대회 이런거 하면 그냥 들어와서 구경하는 사람들을 위헤서 열어놔야한다 라는 생각이 듬
